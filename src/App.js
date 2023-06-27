@@ -1,8 +1,16 @@
+import React from 'react';
+import {
+  BrowserRouter as Router, Routes, Route,
+} from 'react-router-dom';
+
 function App() {
   return (
-    <div>
-      <h1>React capstone metrics webapp</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+      </Routes>
+    </Router>
   );
 }
 
