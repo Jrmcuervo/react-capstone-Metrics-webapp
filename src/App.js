@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <header>
-        <Link to="/">Pokemon List</Link>
+        <Link to="/">First gen pokemons</Link>
       </header>
       <Routes>
         <Route path="/" element={<PokeCards />} />
