@@ -1,12 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import cardsReducer from './reducers/pokeSlice';
 
-const initialState = {
-};
-
-const store = configureStore({
-    reducer: {
-    },
-    preloadedState: initialState,
+export default configureStore({
+  reducer: {
+    cards: cardsReducer,
+  },
 });
-
-export default store;
