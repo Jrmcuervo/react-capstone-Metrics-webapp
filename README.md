@@ -144,7 +144,7 @@ I would like to thank all my colleagues who are always willing to contribute and
 
 ## Loom recording
 
-- [Loom recording](https://www.loom.com/share/d269e459f95b445cbe20d99801a47ffd)
+- [Loom recording](https://www.loom.com/share/7385702d735843f58198a52e96804c42)
 
 <!-- LICENSE -->
 
