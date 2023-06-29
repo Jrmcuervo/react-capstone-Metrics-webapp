@@ -8,6 +8,7 @@ import {
   selectLoading,
   selectError,
 } from '../redux/selectors/pokeSelectors';
+import PokeSearch from './PokeSearch';
 
 const PokeCards = () => {
   const dispatch = useDispatch();
@@ -34,23 +35,18 @@ const PokeCards = () => {
     );
   }
 
-  const filteredCards = cards.filter((card) => card.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  const pokeList = cards.filter((card) => card.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div>
-      <div>
+    <div className="pokemon-list">
+      <div className="pokemon-list__total">
         Total Pokemons:
         {' '}
-        {filteredCards.length}
+        {pokeList.length}
       </div>
-      <input
-        type="text"
-        placeholder="Find your favorite..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <div>
-        {filteredCards.map((card) => (
+      <PokeSearch searchTerm={searchTerm} onSearch={setSearchTerm} />
+      <div className="pokemon-list__cards">
+        {pokeList.map((card) => (
           <div key={card.url}>
             <Link to={`/details/${card.name}`}>
               <button type="button">Details</button>
