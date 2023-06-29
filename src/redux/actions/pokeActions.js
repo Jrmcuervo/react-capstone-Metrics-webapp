@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 const fetchPokemonData = createAsyncThunk('cards/fetchPokemonData', async () => {
-  const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
-  return res.data.results;
+  const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
+  const data = await res.json();
+  return data.results;
 });
 
 export default fetchPokemonData;

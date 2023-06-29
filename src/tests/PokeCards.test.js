@@ -1,69 +1,77 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { useParams } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import PokeCards from '../components/PokeCards';
 
 jest.mock('react-router-dom', () => ({
-  useParams: jest.fn(),
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
 }));
 
+const mockStore = configureStore([thunk]);
+
 describe('PokeCards', () => {
+  let store;
+  const initialState = {
+    cards: {
+      cards: [],
+      loading: false,
+      error: null,
+    },
+  };
+
   beforeEach(() => {
-    useParams.mockReturnValue({ pokemonName: 'pikachu' });
+    store = mockStore(initialState);
+    store.dispatch = jest.fn();
   });
 
-  it('displays loading message when data is not yet fetched', () => {
-    render(<PokeCards />);
+  it('displays loading message when loading is true', () => {
+    const loadingState = {
+      ...initialState,
+      cards: {
+        ...initialState.cards,
+        loading: true,
+      },
+    };
+    store = mockStore(loadingState);
+
+    render(
+      <Provider store={store}>
+        <PokeCards />
+      </Provider>,
+    );
 
     const loadingMessage = screen.getByText('Loading...');
     expect(loadingMessage).toBeInTheDocument();
   });
 
-  it('displays pokemon details after data is fetched', async () => {
-    const mockPokemon = {
-      name: 'Pikachu',
-      sprites: {
-        front_default: 'pikachu.png',
-      },
-      types: [
-        {
-          type: {
-            url: 'https://pokeapi.co/api/v2/type/13/',
-          },
-        },
-      ],
-    };
-
-    const mockTypeDetails = {
-      name: 'Electric',
-      damage_relations: {
-        double_damage_from: [],
-        double_damage_to: [],
-        half_damage_from: [],
-        half_damage_to: [],
+  it('displays total number of cards and search input when not loading', () => {
+    const cards = [
+      { name: 'Card 1', url: '/details/card1' },
+      { name: 'Card 2', url: '/details/card2' },
+      { name: 'Card 3', url: '/details/card3' },
+    ];
+    const loadedState = {
+      ...initialState,
+      cards: {
+        ...initialState.cards,
+        cards,
       },
     };
+    store = mockStore(loadedState);
 
-    global.fetch = jest.fn()
-      .mockResolvedValueOnce({
-        json: async () => mockPokemon,
-      })
-      .mockResolvedValueOnce({
-        json: async () => mockTypeDetails,
-      });
+    render(
+      <Provider store={store}>
+        <PokeCards />
+      </Provider>,
+    );
 
-    render(<PokeCards />);
+    const totalCards = screen.getByText(`Total Pokemons: ${cards.length}`);
+    const searchInput = screen.getByPlaceholderText('Find your favorite...');
 
-    await screen.findByText('Pikachu');
-    await screen.findByAltText('Pikachu');
-    await screen.findByText('Type: Electric');
-
-    const pokemonName = screen.getByText('Pikachu');
-    const pokemonImage = screen.getByAltText('Pikachu');
-    const typeHeading = screen.getByText('Type: Electric');
-
-    expect(pokemonName).toBeInTheDocument();
-    expect(pokemonImage).toBeInTheDocument();
-    expect(typeHeading).toBeInTheDocument();
+    expect(totalCards).toBeInTheDocument();
+    expect(searchInput).toBeInTheDocument();
   });
 });
