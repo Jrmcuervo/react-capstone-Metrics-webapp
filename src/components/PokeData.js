@@ -4,23 +4,27 @@ import { useParams } from 'react-router-dom';
 const PokeData = () => {
   const [pokemon, setPokemon] = useState(null);
   const [typeDetails, setTypeDetails] = useState(null);
+  const [numericValue, setNumericValue] = useState(null);
 
-  const { pokemonName } = useParams();
+  const { pokeName } = useParams();
 
   useEffect(() => {
     const pokemonDetails = async () => {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-      const data = await response.json();
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);
+      const data = await res.json();
       setPokemon(data);
 
       const typeId = data.types[0].type.url.split('/').slice(-2, -1)[0];
       const typeResponse = await fetch(`https://pokeapi.co/api/v2/type/${typeId}`);
       const typeData = await typeResponse.json();
       setTypeDetails(typeData);
+
+      const speed = data.moves.length;
+      setNumericValue(speed);
     };
 
     pokemonDetails();
-  }, [pokemonName]);
+  }, [pokeName]);
 
   if (!pokemon) {
     return <div>Loading...</div>;
@@ -53,6 +57,13 @@ const PokeData = () => {
             {typeDetails.damage_relations.half_damage_from.map((type) => type.name).join(', ')}
           </p>
         </div>
+      )}
+      {numericValue && (
+        <p>
+          <span>  moves :</span>
+          {' '}
+          {numericValue}
+        </p>
       )}
     </div>
   );
