@@ -19,8 +19,8 @@ const PokeData = () => {
       const typeData = await typeResponse.json();
       setTypeDetails(typeData);
 
-      const speed = data.moves.length;
-      setNumericValue(speed);
+      const numMoves = data.moves.length;
+      setNumericValue(numMoves);
     };
 
     pokemonDetails();
@@ -60,7 +60,7 @@ const PokeData = () => {
       )}
       {numericValue && (
         <p>
-          <span>  moves :</span>
+          <span>  Moves :</span>
           {' '}
           {numericValue}
         </p>
