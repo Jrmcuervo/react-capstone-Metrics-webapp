@@ -31,7 +31,7 @@ const PokeData = () => {
   }
 
   return (
-    <div>
+    <div className="pokemon-list__details">
       <h2>{pokemon.name}</h2>
       <img src={pokemon.sprites.front_default} alt={pokemon.name} />
       {typeDetails && (

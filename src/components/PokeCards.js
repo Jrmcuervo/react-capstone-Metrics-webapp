@@ -38,14 +38,14 @@ const PokeCards = () => {
   const pokeList = cards.filter((card) => card.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div>
-      <div>
+    <div className="pokemon-list">
+      <div className="pokemon-list__total">
         Total Pokemons:
         {' '}
         {pokeList.length}
       </div>
       <PokeSearch searchTerm={searchTerm} onSearch={setSearchTerm} />
-      <div>
+      <div className="pokemon-list__cards">
         {pokeList.map((card) => (
           <div key={card.url}>
             <Link to={`/details/${card.name}`}>

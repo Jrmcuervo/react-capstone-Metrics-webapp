@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import fetchPokemonData from '../actions/pokeActions';
 
 const pokeSlice = createSlice({
-  name: 'pokemons',
+  name: 'cards',
   initialState: {
     cards: [],
     loading: false,

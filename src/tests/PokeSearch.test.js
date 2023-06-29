@@ -9,7 +9,7 @@ describe('PokeSearch', () => {
 
     render(<PokeSearch searchTerm={searchTerm} onSearch={onSearchMock} />);
 
-    const inputElement = screen.getByPlaceholderText('Find your favorite...'); // Corregir el atributo placeholder
+    const inputElement = screen.getByPlaceholderText('Find your favorite...');
     expect(inputElement).toBeInTheDocument();
     expect(inputElement.value).toBe(searchTerm);
   });
@@ -20,7 +20,7 @@ describe('PokeSearch', () => {
 
     render(<PokeSearch searchTerm={searchTerm} onSearch={onSearchMock} />);
 
-    const inputElement = screen.getByPlaceholderText('Find your favorite...'); // Corregir el atributo placeholder
+    const inputElement = screen.getByPlaceholderText('Find your favorite...');
     const newSearchTerm = 'new test';
     fireEvent.change(inputElement, { target: { value: newSearchTerm } });
 
