@@ -66,11 +66,11 @@ Welcome to my Metrics webapp project
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a> -->
+## 🚀 Live Demo <a name="live-demo"></a>
 
-**The live demo will be updated as soon as the page is displayed**
+- [Live Demo Link](https://jrmcuervo.github.io/react-capstone-metrics-webapp/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -80,11 +80,11 @@ Welcome to my Metrics webapp project
   https://git-scm.com/downloads and install it).
 - Step 2: Once you have installed git you can clone this project using the command below:
   ```
-  git clone https://github.com/alvaroiporre/Space-Travelers-Hub.git
+  git clone https://github.com/Jrmcuervo/react-capstone-metrics-webapp.git
   ```
 - Step 3: Once you have cloned this repo navigate to the folder that contains
   the repository.
-- Step 4: If you want to watch the html file open it with your favorite web browser(This project MUST be opened from VS Code for full functionality).
+- Step 4: If you want to watch the html file open it with your favorite web browser.
 - Step 5: If you want to edit this project open it with your favorite text editor.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

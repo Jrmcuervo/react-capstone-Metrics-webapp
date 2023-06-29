@@ -87,11 +87,6 @@ header img {
   font-weight: bolder;
 }
 
-.pokemon-list__details span {
-  font-weight: bolder;
-  color: #fff;
-}
-
 .search {
   width: 90%;
 }
