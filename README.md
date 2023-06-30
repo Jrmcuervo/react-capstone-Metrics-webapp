@@ -70,6 +70,8 @@ Welcome to my Metrics webapp project
 
 - [Live Demo Link](https://dancing-mermaid-84c8c5.netlify.app/)
 
+- [Loom recording](https://www.loom.com/share/7385702d735843f58198a52e96804c42)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -141,10 +143,6 @@ I would like to thank all my colleagues who are always willing to contribute and
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Loom recording
-
-- [Loom recording](https://www.loom.com/share/7385702d735843f58198a52e96804c42)
 
 <!-- LICENSE -->
 

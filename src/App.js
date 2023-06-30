@@ -4,12 +4,14 @@ import {
 } from 'react-router-dom';
 import PokeCards from './components/PokeCards';
 import PokeData from './components/PokeData';
+import iconBack from './assets/icon_back.png';
 
 function App() {
   return (
     <Router>
       <header>
-        <Link to="/">First gen pokemons</Link>
+        <Link to="/"><img className="icon-back" src={iconBack} alt="back" /></Link>
+        <h1 to="/">First gen pokemons</h1>
       </header>
       <Routes>
         <Route path="/" element={<PokeCards />} />
