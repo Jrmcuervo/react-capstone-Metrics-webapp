@@ -4,6 +4,10 @@ body {
 }
 
 header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
   padding: 3.8rem;
   background-color: #cf4378;
   border-bottom: 0.4rem solid #e725f1;
@@ -22,6 +26,10 @@ header img {
   width: 16%;
   padding: 0 2%;
   margin-bottom: -0.3rem;
+}
+
+.icon-back {
+  width: 40px;
 }
 
 .pokemon-list {
